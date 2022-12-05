@@ -9,27 +9,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        dayOnePartOne()
+        dayOne()
     }
 
-    fun dayOnePartOne() {
-        val elfCalories = getString(R.string.day_1_input).split('\n')
+    private fun dayOne() {
+        val elfCalories = getDayOneData()
+        dayOnePartOne(elfCalories)
+        dayOnePartTwo(elfCalories)
+    }
 
-        var mostCalories = 0
-        var comparisonCalories = 0
-        elfCalories.forEach { cal :String ->
+    private fun getDayOneData(): List<Int> {
+        val allElfCalories = getString(R.string.day_1_input)
+            .split('\n')
+            .map { it.toIntOrNull() }
 
-            if (cal.equals('\n') || cal == "") {
-                if (comparisonCalories > mostCalories) {
-                    mostCalories = comparisonCalories
-                }
-                comparisonCalories = 0
+        val calorieTotalsByElf = mutableListOf<Int>()
+        var calorieTotal = 0
+        allElfCalories.forEach { cal ->
+            if (cal == null) {
+                calorieTotalsByElf.add(calorieTotal)
+                calorieTotal = 0
             } else {
-                comparisonCalories += cal.toInt()
+                calorieTotal += cal
             }
         }
+        calorieTotalsByElf.add(calorieTotal)
+        return calorieTotalsByElf
+    }
 
+    private fun dayOnePartOne(elfCalories: List<Int>) {
         val dayOneFirstAnswer: TextView = findViewById(R.id.day_one_first_answer)
-        dayOneFirstAnswer.text = mostCalories.toString()
+        dayOneFirstAnswer.text = elfCalories.maxOrNull().toString()
+    }
+
+    private fun dayOnePartTwo(elfCalories: List<Int>) {
+        val topThreeTotalCalories = elfCalories.sortedDescending().subList(0,3).sum()
+
+        val dayOneSecondAnswer: TextView = findViewById(R.id.day_one_second_answer)
+        dayOneSecondAnswer.text = topThreeTotalCalories.toString()
     }
 }

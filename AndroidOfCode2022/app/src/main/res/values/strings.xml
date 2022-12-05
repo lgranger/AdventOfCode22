@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">AdventOfCode2022</string>
-    7761
+    <string name="app_name">Advent Of Code 2022</string>
+    <string name="day_one">Day One</string>
     <string name="day_1_input">"17998
 7761
 
@@ -2238,12 +2238,18 @@
 10883
 10054
 13688"</string>
-    <string name="mock_day_1_input">"111
-111
-111
+    <string name="mock_input">"1000
+2000
+3000
 
-111
+4000
 
-111
-111"</string>
+5000
+6000
+
+7000
+8000
+9000
+
+10000"</string>
 </resources>
