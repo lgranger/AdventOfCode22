@@ -11,6 +11,60 @@ class MainActivity : AppCompatActivity() {
 
         dayOne()
         dayTwo()
+        dayThree()
+    }
+
+    private fun dayThree() {
+        val rucksackContents = getString(R.string.day_3_input).split('\n')
+        dayThreePartOne(rucksackContents)
+        dayThreePartTwo(rucksackContents)
+    }
+
+    private fun dayThreePartOne(rucksackContents: List<String>) {
+        val allDuplicateItems = mutableListOf<Char>()
+        rucksackContents.forEach { sack ->
+            val count = sack.length
+            val first = sack.substring(0, count/2)
+            val second = sack.substring(count/2, count)
+            val sackDuplicates = mutableListOf<Char>()
+            first.forEach { item ->
+                if (second.contains(item)) {
+                    if (!sackDuplicates.contains(item)) {
+                        sackDuplicates.add(item)
+                        allDuplicateItems.add(item)
+                    }
+                }
+            }
+        }
+        val score = priorityScoreItems(allDuplicateItems.joinToString())
+        val dayTwoFirstAnswer: TextView = findViewById(R.id.day_three_first_answer)
+        dayTwoFirstAnswer.text = score.toString()
+    }
+
+    private fun dayThreePartTwo(rucksackContents: List<String>) {
+        var score = 0
+        rucksackContents.windowed(3, 3) { group ->
+            group[0].forEach { character ->
+                if (group[1].contains(character) && group[2].contains(character)) {
+                    score += priorityScoreItems(character.toString())
+                    return@windowed
+                }
+            }
+        }
+        val dayThreeSecondAnswer: TextView = findViewById(R.id.day_three_second_answer)
+        dayThreeSecondAnswer.text = score.toString()
+    }
+
+    private fun priorityScoreItems(items: String): Int {
+        var score = 0
+        items.forEach { character ->
+            score += if (character.code < 91) {
+                character.code - 38
+            } else {
+                character.code - 96
+            }
+        }
+        return score
     }
 
     private fun dayTwo() {
@@ -83,6 +137,4 @@ class MainActivity : AppCompatActivity() {
         val dayOneSecondAnswer: TextView = findViewById(R.id.day_one_second_answer)
         dayOneSecondAnswer.text = topThreeTotalCalories.toString()
     }
-
-
 }
