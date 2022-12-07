@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         dayOne()
         dayTwo()
         dayThree()
+        dayFour()
     }
 
     private fun dayOne() {
@@ -41,4 +42,12 @@ class MainActivity : AppCompatActivity() {
         dayThreeSecondAnswer.text = dayThree.secondPuzzle()
     }
 
+    private fun dayFour() {
+        val dayFourFirstAnswer: TextView = findViewById(R.id.day_four_first_answer)
+        val dayFourSecondAnswer: TextView = findViewById(R.id.day_four_second_answer)
+
+        val dayFour = Day4CampCleanup(getString(R.string.day_4_input))
+        dayFourFirstAnswer.text = dayFour.firstPuzzle()
+        dayFourSecondAnswer.text = dayFour.secondPuzzle()
+    }
 }
