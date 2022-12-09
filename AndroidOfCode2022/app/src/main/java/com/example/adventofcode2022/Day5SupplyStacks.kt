@@ -62,7 +62,6 @@ class Day5SupplyStacks(private var input: String): Day() {
         stacks.forEach { stack ->
             topCrates += stack.pop()
         }
-        System.out.println(topCrates)
         return topCrates
     }
 
@@ -85,7 +84,6 @@ class Day5SupplyStacks(private var input: String): Day() {
         stacks.forEach { stack ->
             topCrates += stack.pop()
         }
-        System.out.println(topCrates)
         return topCrates
     }
 }

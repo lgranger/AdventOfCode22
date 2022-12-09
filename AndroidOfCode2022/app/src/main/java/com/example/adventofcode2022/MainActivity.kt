@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         dayThree()
         dayFour()
         dayFive()
+        daySix()
     }
 
     private fun dayOne() {
@@ -59,5 +60,15 @@ class MainActivity : AppCompatActivity() {
         val dayFive = Day5SupplyStacks(getString(R.string.day_5_input))
         dayFiveFirstAnswer.text = dayFive.firstPuzzle()
         dayFiveSecondAnswer.text = dayFive.secondPuzzle()
+    }
+
+    private fun daySix() {
+        val daySixFirstAnswer: TextView = findViewById(R.id.day_six_first_answer)
+        val daySixSecondAnswer: TextView = findViewById(R.id.day_six_second_answer)
+
+        val daySix = Day6TuningTrouble(getString(R.string.day_6_input))
+        daySixFirstAnswer.text = daySix.firstPuzzle()
+        daySixSecondAnswer.text = daySix.secondPuzzle()
+
     }
 }
