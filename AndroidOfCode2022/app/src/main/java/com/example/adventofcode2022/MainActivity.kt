@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
         dayFour()
         dayFive()
         daySix()
+        daySeven()
     }
 
     private fun dayOne() {
@@ -69,6 +70,14 @@ class MainActivity : AppCompatActivity() {
         val daySix = Day6TuningTrouble(getString(R.string.day_6_input))
         daySixFirstAnswer.text = daySix.firstPuzzle()
         daySixSecondAnswer.text = daySix.secondPuzzle()
+    }
 
+    private fun daySeven() {
+        val daySevenFirstAnswer: TextView = findViewById(R.id.day_seven_first_answer)
+        val daySevenSecondAnswer: TextView = findViewById(R.id.day_seven_second_answer)
+
+        val daySeven = Day7NoSpaceLeftOnDevice(getString(R.string.day_7_input))
+        daySevenFirstAnswer.text = daySeven.firstPuzzle()
+        daySevenSecondAnswer.text = daySeven.secondPuzzle()
     }
 }
